@@ -1,0 +1,123 @@
+.app {
+    width: 824px;
+    position: fixed;
+    top: 0px;
+    right: -824px;
+    bottom: 0px;
+
+    background: transparent;
+    border: none;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    z-index: 1000;
+}
+
+.app_open_no .hide-button {
+    position: relative;
+    left: -100px;
+}
+
+.app_open_yes {
+    right: 0px;
+
+    background: white;
+    border-left: 1px solid darkgray;
+}
+
+
+.timer-list {
+    display: flex;
+    flex-direction: column;
+}
+.timer-list__tasks {
+    overflow: auto;
+}
+
+.list-item {
+    padding: 8px 16px;
+    border: 1px solid gray;
+    margin-bottom: 8px;
+    background: white;
+
+    /*position: relative;*/
+    /*left: -56px;*/
+}
+/*.list-item_open {*/
+    /*left: auto;*/
+/*}*/
+
+.timer {
+    white-space: nowrap;
+}
+.timer_active {
+    color: white;
+    background: #2E7D32;
+}
+
+.timer__start,
+.timer__pause,
+.timer__stop,
+.add-button,
+.hide-button{
+    cursor: pointer;
+}
+
+.text {
+    width: 100%;
+    height: 100%;
+    resize: none;
+    padding: 8px;
+    border: none;
+    box-sizing: border-box;
+}
+
+
+.b-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 512px;
+
+    transform: translate(-50%, -50%);
+
+    padding: 16px;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.b-popup__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1000;
+}
+
+.b-block {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+}
+
+.b-block_valid_no {
+    color: #830000;
+}
+
+.save-button {
+    display: block;
+    width: 96px;
+    height: 32px;
+    margin: 8px auto;
+}
+
+.popup-save-button {
+    margin: 16px auto 0px;
+    display: block;
+    height: 24px;
+    width: 64px;
+}

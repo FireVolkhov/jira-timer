@@ -1,0 +1,30 @@
+{
+  "name": "Jira Timer",
+  "version": "0.0.1",
+  "description": "Человеческие логи времени для Джиры",
+  "permissions": [
+    "*://*.atlassian.net/*"
+  ],
+
+  "web_accessible_resources": [
+    "/dist/bundle.js",
+    "style.css"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.atlassian.net/*"
+      ],
+      "js": [
+        "/dist/bundle.js"
+      ],
+      "css": [
+        "style.css"
+      ],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "manifest_version": 2
+}
