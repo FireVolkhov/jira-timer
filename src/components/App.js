@@ -71,7 +71,7 @@ export default class App extends React.Component {
         let init = false;
 
         _.each(lines, (l) => {
-            let timeLine = /^((\d\d)(?:\/|\s)(\d\d)\s)?(\d\d)(?:\s|:)(\d\d)$/i;
+            let timeLine = /^((\d?\d)(?:\/|\s)(\d?\d)\s)?(\d?\d)(?:\s|:)(\d?\d)$/i;
 
             if (timeLine.test(l)) {
                 if (init) {
@@ -185,7 +185,7 @@ export default class App extends React.Component {
         let cssClass = 'app app_jira-timer app_open_' +
             (this.state.open ? 'yes' : 'no');
 
-        let manual = '9 50\n' +
+        let manual = '09 50\n' +
             'task Unit6-2\n' +
             'Так выглядит обычный лог\n\n' +
             '10 50\n' +
