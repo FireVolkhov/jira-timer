@@ -185,11 +185,27 @@ export default class App extends React.Component {
         let cssClass = 'app app_jira-timer app_open_' +
             (this.state.open ? 'yes' : 'no');
 
+        let manual = '9 50\n' +
+            'task Unit6-2\n' +
+            'Так выглядит обычный лог\n\n' +
+            '10 50\n' +
+            'Если нужно, можно сделать пустой блок без таски и он не залогируется\n\n' +
+            '11 00\n' +
+            'task page\n' +
+            'При написании названия таски "page" номер будет взят со странице\n\n' +
+            'now\n' +
+            '"now" заменяется на текущее время\n\n' +
+            '21/12 12 10\n' +
+            'Так можно указать конкретную дату для времени\n' +
+            'После нажатия "save" покажеться попап с данными которые будут залогированы\n\n' +
+            '21/12 13 40';
+
         return <div className={cssClass}>
             <textarea
                 className="text"
                 value={this.state.value}
                 onChange={(e) => this.setValue(e.target.value)}
+                placeholder={manual}
                 ></textarea>
             <button
                 className="save-button"
