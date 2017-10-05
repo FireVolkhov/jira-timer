@@ -21556,7 +21556,7 @@
 	            var init = false;
 	
 	            _.each(lines, function (l) {
-	                var timeLine = /^((\d\d)(?:\/|\s)(\d\d)\s)?(\d\d)(?:\s|:)(\d\d)$/i;
+	                var timeLine = /^((\d?\d)(?:\/|\s)(\d?\d)\s)?(\d?\d)(?:\s|:)(\d?\d)$/i;
 	
 	                if (timeLine.test(l)) {
 	                    if (init) {
@@ -21685,7 +21685,7 @@
 	
 	            var cssClass = 'app app_jira-timer app_open_' + (this.state.open ? 'yes' : 'no');
 	
-	            var manual = '9 50\n' + 'task Unit6-2\n' + 'Так выглядит обычный лог\n\n' + '10 50\n' + 'Если нужно, можно сделать пустой блок без таски и он не залогируется\n\n' + '11 00\n' + 'task page\n' + 'При написании названия таски "page" номер будет взят со странице\n\n' + 'now\n' + '"now" заменяется на текущее время\n\n' + '21/12 12 10\n' + 'Так можно указать конкретную дату для времени\n' + 'После нажатия "save" покажеться попап с данными которые будут залогированы\n\n' + '21/12 13 40';
+	            var manual = '09 50\n' + 'task Unit6-2\n' + 'Так выглядит обычный лог\n\n' + '10 50\n' + 'Если нужно, можно сделать пустой блок без таски и он не залогируется\n\n' + '11 00\n' + 'task page\n' + 'При написании названия таски "page" номер будет взят со странице\n\n' + 'now\n' + '"now" заменяется на текущее время\n\n' + '21/12 12 10\n' + 'Так можно указать конкретную дату для времени\n' + 'После нажатия "save" покажеться попап с данными которые будут залогированы\n\n' + '21/12 13 40';
 	
 	            return _react2.default.createElement(
 	                "div",
@@ -21695,6 +21695,9 @@
 	                    value: this.state.value,
 	                    onChange: function onChange(e) {
 	                        return _this4.setValue(e.target.value);
+	                    },
+	                    onFocus: function onFocus() {
+	                        return _this4.setState({ value: localStorage.getItem('jira-timer-log') });
 	                    },
 	                    placeholder: manual
 	                }),
@@ -53845,6 +53848,7 @@
 	                    { ref: "this", className: "b-popup", style: { opacity: this.state.loading ? 0.5 : 1 } },
 	                    _.map(this.state.blocks, function (b) {
 	                        var valid = b.time > 0 && b.task && b.date && b.text;
+	                        var hours = parseInt(b.time / 60);
 	
 	                        return _react2.default.createElement(
 	                            "div",
@@ -53852,7 +53856,12 @@
 	                            _react2.default.createElement(
 	                                "div",
 	                                null,
-	                                "Task: ",
+	                                _react2.default.createElement(
+	                                    "b",
+	                                    null,
+	                                    "Task:"
+	                                ),
+	                                " ",
 	                                _react2.default.createElement(
 	                                    "a",
 	                                    { href: "/browse/" + b.task },
@@ -53862,28 +53871,29 @@
 	                            _react2.default.createElement(
 	                                "div",
 	                                null,
-	                                "Time: ",
-	                                parseInt(b.time / 60),
-	                                "h ",
+	                                _react2.default.createElement(
+	                                    "b",
+	                                    null,
+	                                    "Time:"
+	                                ),
+	                                " ",
+	                                0 < hours ? hours + 'h' : '',
+	                                " ",
 	                                b.time % 60,
 	                                "m"
 	                            ),
 	                            _react2.default.createElement(
 	                                "div",
 	                                null,
-	                                "Date: ",
+	                                _react2.default.createElement(
+	                                    "b",
+	                                    null,
+	                                    "Date:"
+	                                ),
+	                                " ",
 	                                b.date
 	                            ),
-	                            _react2.default.createElement(
-	                                "div",
-	                                null,
-	                                "Text:"
-	                            ),
-	                            _react2.default.createElement(
-	                                "div",
-	                                null,
-	                                b.text
-	                            )
+	                            _react2.default.createElement("div", { dangerouslySetInnerHTML: { __html: b.text.replace(/\n/g, '<br/>') } })
 	                        );
 	                    }),
 	                    _react2.default.createElement(

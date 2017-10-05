@@ -205,8 +205,8 @@ export default class App extends React.Component {
                 className="text"
                 value={this.state.value}
                 onChange={(e) => this.setValue(e.target.value)}
-                placeholder={manual}
-                ></textarea>
+                onFocus={() => this.setState({value: localStorage.getItem('jira-timer-log')})}
+                placeholder={manual}/>
             <button
                 className="save-button"
                 onClick={() => this.parseLog(this.state.value)}

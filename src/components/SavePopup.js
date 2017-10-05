@@ -27,13 +27,13 @@ export default class SavePopup extends CoreComponent {
             <div ref="this" className="b-popup" style={{opacity: this.state.loading ? 0.5 : 1}}>
                 {_.map(this.state.blocks, (b) => {
                     let valid = b.time > 0 && b.task && b.date && b.text;
+                    const hours = parseInt(b.time/60);
 
                     return <div key={b.id} className={`b-block b-block_valid_${valid ? 'yes' : 'no'}`}>
-                        <div>Task: <a href={`/browse/${b.task}`}>{b.task}</a></div>
-                        <div>Time: {parseInt(b.time/60)}h {b.time % 60}m</div>
-                        <div>Date: {b.date}</div>
-                        <div>Text:</div>
-                        <div>{b.text}</div>
+                        <div><b>Task:</b> <a href={`/browse/${b.task}`}>{b.task}</a></div>
+                        <div><b>Time:</b> {0 < hours ? hours + 'h' : ''} {b.time % 60}m</div>
+                        <div><b>Date:</b> {b.date}</div>
+                        <div dangerouslySetInnerHTML={{__html: b.text.replace(/\n/g, '<br/>')}}/>
                     </div>;
                 })}
                 <button

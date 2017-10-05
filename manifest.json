@@ -1,6 +1,6 @@
 {
   "name": "Jira Timer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Человеческие логи времени для Джиры",
   "permissions": [
     "*://*.atlassian.net/*"
@@ -10,6 +10,12 @@
     "/dist/bundle.js",
     "style.css"
   ],
+
+  "icons": {
+    "16": "icon16.ico",
+    "48": "icon16.ico",
+    "128": "icon16.ico"
+  },
 
   "content_scripts": [
     {
