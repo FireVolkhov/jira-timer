@@ -1,6 +1,6 @@
 {
   "name": "Jira Timer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Человеческие логи времени для Джиры",
   "permissions": [
     "*://*.atlassian.net/*"
