@@ -39,10 +39,9 @@ export default class App extends React.Component {
         let lines = value.split('\n');
 
         _.each(lines, (l, i) => {
-            let taskNameReg = /^task page$/i;
+            let taskNameReg = /^(task page|ефыл зфпу)$/i;
             let taskReg = /^\/browse\/([^?]+)(?:\?.*)?/i;
-            let now = /^now$/i;
-
+            let now = /^(now|тщц)$/i;
 
 
             if (taskNameReg.test(l) && taskReg.test(location.pathname)) {

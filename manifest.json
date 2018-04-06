@@ -1,9 +1,10 @@
 {
   "name": "Jira Timer",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Человеческие логи времени для Джиры",
   "permissions": [
-    "*://*.atlassian.net/*"
+    "*://*.atlassian.net/*",
+    "*://jira.parcsis.org/*"
   ],
 
   "web_accessible_resources": [
