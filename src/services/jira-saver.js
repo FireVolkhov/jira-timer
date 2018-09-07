@@ -1,7 +1,7 @@
 export default {
 	multiSave(timers) {
 		timers = _.filter(timers, (t) => t.task && t.time > 0 && t.date && t.text);
-		return Promise.all(_.map(timers, (t) => this.saveTime(t.task, t.time + 'm', t.date, t.text)));
+		return Promise.all(_.map(timers, (t) => this.saveTime(t.task, t.time, t.rawDate, t.text)));
 	},
 
 	/**
@@ -17,11 +17,13 @@ export default {
 			const data = {
 				timeSpentSeconds: time * 60,
 				comment: `<p>${comment}</p>`,
-				started: date.toISOString()
+				started: date.toISOString().replace('Z', '+0000')
 			};
 
 			$.ajax({
 				type: 'POST',
+				contentType: 'application/json',
+				dataType: 'json',
 				//url: 'https://5evenagency.atlassian.net/rest/internal/2/issue/CORE-1705/worklog?adjustEstimate=auto',
 				url: `/rest/internal/2/issue/${task}/worklog?adjustEstimate=auto`,
 				// {
